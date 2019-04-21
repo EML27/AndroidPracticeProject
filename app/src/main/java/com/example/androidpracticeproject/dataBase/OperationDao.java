@@ -15,8 +15,11 @@ public interface OperationDao {
     @Query("SELECT * FROM Operation WHERE id = :id")
     Operation getById(long id);
 
-    @Query("SELECT * FROM Operation WHERE type = :type")
-    Operation getByType(Type type);
+    @Query("SELECT * FROM Operation WHERE name = :name")
+    Operation getByName(String name);
+
+    //@Query("SELECT * FROM Operation WHERE type = :type")
+    //Operation getByType(Type type);
 
     @Insert
     void insert(Operation operation);

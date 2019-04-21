@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.Calendar;
-import java.util.Date;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button addOperationButton = findViewById(R.id.add_operation_button);
-        Button targetButton = findViewById(R.id.target_button);
-        Button historyButton = findViewById(R.id.history_button);
+        ImageButton addOperationButton = findViewById(R.id.btn_add);
+
+        ImageButton historyButton = findViewById(R.id.btn_history);
 
         Intent addOperationIntent = new Intent(MainActivity.this,NewOperationActivity.class);
         addOperationButton.setOnClickListener(v -> startActivity(addOperationIntent));
@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        TextView balance = findViewById(R.id.balance);
+        TextView balance = findViewById(R.id.tv_balance);
 
-        TextView leftToday = findViewById(R.id.left_today);
+        TextView leftToday = findViewById(R.id.tv_day_balance);
         SharedPreferences appSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
         balance.setText(String.valueOf(appSettings.getFloat("balance", 0)));
