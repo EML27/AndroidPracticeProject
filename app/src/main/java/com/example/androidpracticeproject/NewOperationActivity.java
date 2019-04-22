@@ -34,6 +34,7 @@ public class NewOperationActivity extends AppCompatActivity {
             Calendar calendar = Calendar.getInstance();
             operation.date = calendar.getTimeInMillis();
             OperationDao operationDao = db.operationDao();
+            // dobavit' generator id
             operationDao.insert(operation);
         });
     }
