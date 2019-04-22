@@ -1,5 +1,7 @@
 package com.example.androidpracticeproject;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -13,7 +15,10 @@ import com.example.androidpracticeproject.dataBase.OperationDao;
 
 import java.util.Calendar;
 
+import static com.example.androidpracticeproject.MainActivity.APP_PREFERENCES;
+
 public class NewOperationActivity extends AppCompatActivity {
+    SharedPreferences appSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +40,11 @@ public class NewOperationActivity extends AppCompatActivity {
             operation.date = calendar.getTimeInMillis();
             OperationDao operationDao = db.operationDao();
             // dobavit' generator id
+            // a hotya zachem?
+            SharedPreferences.Editor editor =appSettings.edit();
+            editor.putFloat("balance",appSettings.getFloat("balance",0)+operationCost);
             operationDao.insert(operation);
+            this.finish();
         });
     }
 }

@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 @Entity
 public class Operation {
     @PrimaryKey
-    public long id;
     @NonNull
     public String name;
 

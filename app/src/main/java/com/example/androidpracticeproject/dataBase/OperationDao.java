@@ -12,8 +12,8 @@ public interface OperationDao {
     @Query("SELECT * FROM Operation")
     List<Operation> getAll();
 
-    @Query("SELECT * FROM Operation WHERE id = :id")
-    Operation getById(long id);
+    /*@Query("SELECT * FROM Operation WHERE id = :id")
+    Operation getById(long id);*/
 
     @Query("SELECT * FROM Operation WHERE name = :name")
     Operation getByName(String name);
