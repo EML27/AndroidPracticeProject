@@ -11,7 +11,6 @@ public class Operation {
     public String name;
 
     //public Type type;
-
     public long date;
 
     public float cost;

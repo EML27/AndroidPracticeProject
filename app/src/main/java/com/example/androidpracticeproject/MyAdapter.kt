@@ -6,6 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.androidpracticeproject.dataBase.Operation
+import kotlinx.android.synthetic.main.history_item.view.*
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class MyAdapter(val list: List<Operation>) : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
@@ -17,20 +21,22 @@ class MyAdapter(val list: List<Operation>) : RecyclerView.Adapter<MyAdapter.View
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder?.tvTitle?.text = list[position].name
-        holder?.tvCost?.text = list[position].cost.toString()
-        holder?.tvDate?.text = list[position].date.toString()
-        //holder?.tvType?.text = list[position].type.toString()
+        holder.bindViews(list[position])
     }
 
     override fun getItemCount(): Int {
         return list.size
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
-        var tvTitle: TextView? = null
-        var tvCost: TextView? = null
-        var tvDate: TextView? = null
-        //var tvType: TextView? = null
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        fun bindViews(operation: Operation) {
+            with(itemView) {
+                var format = "dd/MM/yyyy hh:mm"
+                val formatter = SimpleDateFormat(format)
+                tv_action.text = operation.name
+                tv_debt_size.text = operation.cost.toString()
+                tv_date.text = formatter.format(operation.date)
+            }
+        }
     }
 }

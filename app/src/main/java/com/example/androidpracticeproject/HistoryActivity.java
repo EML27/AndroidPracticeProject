@@ -21,13 +21,12 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
-        AppDatabase db = App.getInstance().getDatabase();
+        AppDatabase db = AppDatabase.getInstance(this);
         OperationDao operationDao = db.operationDao();
         List<Operation> list = operationDao.getAll();
 
 
         recyclerView = (RecyclerView) findViewById(R.id.rv_history);
-        recyclerView. setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         adapter = new MyAdapter(list);
