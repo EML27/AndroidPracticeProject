@@ -6,10 +6,7 @@
     <string name="balance_for_a_day">Balance for a day</string>
 
     <string-array name="types">
-        <item>food</item>
-        <item>transport</item>
-        <item>tax</item>
-        <item>salary</item>
-        <item>over</item>
+        <item>replenishment</item>
+        <item>withdraw</item>
     </string-array>
 </resources>

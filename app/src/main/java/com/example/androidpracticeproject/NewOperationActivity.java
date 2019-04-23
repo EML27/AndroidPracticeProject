@@ -42,10 +42,18 @@ public class NewOperationActivity extends AppCompatActivity {
             OperationDao operationDao = db.operationDao();
             // dobavit' generator id
             // a hotya zachem?
+            operation.id = (int)calendar.getTimeInMillis();
+            // nado!
+            operation.isAddition = typeSpinner.getSelectedItem().toString().equals("replenishment");
             SharedPreferences.Editor editor = appSettings.edit();
+            if (operation.isAddition){
                 editor
                     .putFloat("balance", appSettings.getFloat("balance", 0) + operationCost)
-                    .apply();
+                    .apply();} else {
+                editor
+                        .putFloat("balance", appSettings.getFloat("balance", 0) - operationCost)
+                        .apply();
+            }
 
             operationDao.insert(operation);
             this.finish();

@@ -1,5 +1,6 @@
 package com.example.androidpracticeproject
 
+import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +37,8 @@ class MyAdapter(val list: List<Operation>) : RecyclerView.Adapter<MyAdapter.View
                 tv_action.text = operation.name
                 tv_debt_size.text = operation.cost.toString()
                 tv_date.text = formatter.format(operation.date)
+                if (!operation.isAddition)
+                    tv_debt_size.setTextColor(Color.RED)
             }
         }
     }
